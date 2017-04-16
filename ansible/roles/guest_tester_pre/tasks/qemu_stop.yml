@@ -21,10 +21,3 @@
   when: qemu_pid_task.stdout != ""
   tags: qemu
 
-#TODO: ability to run un parallel several jobs
-- name: delete per-test-instance directory
-  file:
-  args:
-    name: "{{ tmpfs_mountpoint }}/{{ test_instance_id }}"
-    state: absent
-  tags: qemu
