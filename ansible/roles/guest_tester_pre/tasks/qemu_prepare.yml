@@ -128,7 +128,7 @@
   command: sshpass -p esd ssh -o "StrictHostKeyChecking=no" -p 2222 root@127.0.0.1 "{{ item }}"
   with_items:
     - 'free && sync && echo 3 > /proc/sys/vm/drop_caches && free'
-    - 'halt'
+    - 'shutdown -P now'
 
 - include: qemu_stop.yml
 
@@ -173,7 +173,7 @@
   command: sshpass -p esd ssh -o "StrictHostKeyChecking=no" -p 2222 root@127.0.0.1 "{{ item }}"
   with_items:
     - 'free && sync && echo 3 > /proc/sys/vm/drop_caches && free'
-    - 'halt'
+    - 'shutdown -P now'
 
 - include: qemu_stop.yml
 

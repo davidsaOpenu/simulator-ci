@@ -23,5 +23,5 @@
   command: "{{ item }}"
   with_items:
     - 'free && sync && echo 3 > /proc/sys/vm/drop_caches && free'
-    - 'halt'
+    - 'shutdown -P now'
   when: test_and_halt
