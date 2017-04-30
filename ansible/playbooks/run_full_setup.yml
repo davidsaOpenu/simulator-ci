@@ -23,7 +23,7 @@
 - name: perform guest tests with STORAGE_STRATEGY_SECTOR
   hosts: guests
   roles:
-    - { role: guest_tester, ssd_storage_strategy: 1, test_and_halt: true }
+    - { role: guest_tester, ssd_storage_strategy: 1, test_and_shutdown: true }
   tags: guest
 
 #- name:  stop
@@ -46,6 +46,6 @@
 - name: perform guest tests with OBJECT_STRATEGY_OBJECT
   hosts: guests
   roles:
-    - { role: guest_tester, ssd_storage_strategy: 2, test_and_halt: false }
+    - { role: guest_tester, ssd_storage_strategy: 2, test_and_shutdown: false }
   tags: guest
 

@@ -19,9 +19,10 @@
   args:
      chdir: guest
 
-- name: halt kernel if test_and_halt is set
+- name: shutdown guest vm if test_and_shutdown is set
+  become: true
   command: "{{ item }}"
   with_items:
-    - 'free && sync && echo 3 > /proc/sys/vm/drop_caches && free'
+    - 'free && sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches' && free'
     - 'shutdown -P now'
-  when: test_and_halt
+  when: test_and_shutdown
