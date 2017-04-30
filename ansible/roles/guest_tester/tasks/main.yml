@@ -23,6 +23,6 @@
   become: true
   command: "{{ item }}"
   with_items:
-    - 'free && sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches' && free'
+    - "free && sync && sh -c 'echo 3 > /proc/sys/vm/drop_caches' && free"
     - 'shutdown -P now'
   when: test_and_shutdown
