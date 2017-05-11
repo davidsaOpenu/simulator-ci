@@ -28,6 +28,8 @@
       # to compile nvme compl tests
       - libboost-all-dev
       - libxml++2.6-dev
+      # to check if the host supports virtualization
+      - libvirt-bin
 
 - name: install packages for SSD monitor
   apt:

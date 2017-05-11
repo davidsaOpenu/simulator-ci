@@ -1,3 +1,5 @@
+# Make sure VT is supported and enabled, and KVM module is loaded
+- include: kvm-vt.yml
 # Download and build gtest if not existing
 - include: gtest.yml
 # Download and build bear if not existing
