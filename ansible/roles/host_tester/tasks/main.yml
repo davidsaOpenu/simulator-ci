@@ -22,4 +22,13 @@
 - debug: msg="Object tests stdout\n{{ object_tests.stdout }}"
 - debug: msg="Object tests stderr\n{{ object_tests.stderr }}"
 
+- name: run account manager tests
+  shell: valgrind --leak-check=full --error-exitcode=2 ./account_mgr_tests
+  args:
+      chdir: "{{ dest }}/eVSSIM/tests/host"
+  register: account_mgr_tests
+
+- debug: msg="Account manager tests stdout\n{{ account_mgr_tests.stdout }}"
+- debug: msg="Account manager tests stderr\n{{ account_mgr_tests.stderr }}"
+
 - debug: msg="Done running tests on {{ ref }}, target is in {{ dest }}"
