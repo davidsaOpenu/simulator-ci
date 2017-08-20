@@ -1,0 +1,24 @@
+- name: check whether libwebsockets was built
+  stat: "path={{ ansible_env.HOME }}/libwebsockets/lib/libwebsockets.a"
+  register: libwebsockets_file
+
+- name: get libwebsockets
+  unarchive:
+  args:
+    src: https://github.com/warmcat/libwebsockets/archive/v2.3.0.tar.gz
+    dest: "{{ ansible_env.HOME }}"
+    copy: no
+  when: libwebsockets_file.stat.exists == false
+
+- name: move to the right folder
+  command: "mv libwebsockets-2.3.0 libwebsockets"
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/libwebsockets"
+  when: libwebsockets_file.stat.exists == false
+
+- name: build libwebsockets
+  shell: "cmake . && make && make install"
+  args:
+    chdir: "{{ ansible_env.HOME }}/libwebsockets"
+  when: libwebsockets_file.stat.exists == false
