@@ -5,12 +5,12 @@
       state: installed
   become: true
   with_items:
+      - vim
       - git
       - "{{ gcc }}"
       # to build gtest
       - cmake
       - g++
-      - libxen-dev
       - unzip
       # to build osc-osd
       - libsqlite3-dev
@@ -30,6 +30,7 @@
       - libxml++2.6-dev
       # to check if the host supports virtualization
       - libvirt-bin
+      - libssl-dev
 
 - name: install packages for SSD monitor
   apt:
