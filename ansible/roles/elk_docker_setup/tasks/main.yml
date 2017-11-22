@@ -40,3 +40,19 @@
 
 #include the role that creates filebeat docker container
 - include: filebeat.yml
+
+# Pause for 30 seconds to allow elastic stack to start.
+- pause:
+    prompt: "Pause for 30 seconds to allow elastic stack to start"
+    seconds: 30
+
+# tasks for updating elastic search mappings
+- name: PUT evssim_elk_mapping.json file to elastic search
+  uri:
+    url: http://localhost:9200/_template/evssim_template
+    method: PUT
+    user: elastic
+    password: changeme
+    force_basic_auth: yes
+    body: "{{ lookup('file', 'roles/elk_docker_setup/files/evssim_elk_mapping.json') }}"
+    body_format: json
