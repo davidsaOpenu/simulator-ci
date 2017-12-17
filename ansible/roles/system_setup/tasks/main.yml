@@ -104,3 +104,7 @@
     state: mounted
     src: tmpfs
     name: "{{tmpfs_mountpoint}}"
+
+# Download and build libwebsockets if not existing
+- include: libwebsockets.yml
+

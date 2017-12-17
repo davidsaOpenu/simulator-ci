@@ -4,5 +4,3 @@
 - include: gtest.yml
 # Download and build bear if not existing
 - include: bear.yml
-# Download and build libwebsockets if not existing
-- include: libwebsockets.yml
