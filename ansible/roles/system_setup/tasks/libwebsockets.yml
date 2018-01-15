@@ -2,9 +2,10 @@
   stat: "path=/opt/libwebsockets/lib/libwebsockets.a"
   register: libwebsockets_file
 
-- git: get libwebsockets
+- name: get libwebsockets
+  git:
     repo: 'https://github.com/warmcat/libwebsockets.git'
-    dest: /opt
+    dest: /opt/libwebsockets
     version: v2.4-stable
   when: libwebsockets_file.stat.exists == false
 
@@ -13,3 +14,4 @@
   args:
     chdir: "/opt/libwebsockets"
   when: libwebsockets_file.stat.exists == false
+
